@@ -12,8 +12,6 @@ jobs:
     # OS to run our job on
     runs-on: ubuntu-latest
     steps:
-      - name: Echo github obj
-        run: echo "${{ toJson(github.event.head_commit)  }}"
 
       - name: Send a request to webhook
         run: |
@@ -27,7 +25,7 @@ jobs:
               "description": "${{ github.event.head_commit.message }} has been deployed.",
               "color": 2123412,
               "thumbnail": {
-                "url": "https://business.futureskill.co/fs-logo-light.png"
+                "url": "https://assets.futureskill.co/users-profile/b2ba3c2e-24cd-458a-85d1-bec924b0f486.jpeg"
               },
               "author": {
                 "name": "${{ github.actor }}",
