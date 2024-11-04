@@ -16,11 +16,11 @@ jobs:
         run: |
           RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
           "username": "GitHub",
-          "content": "@everyone",
+          "content": "@Tech",
           "embeds": [
             {
               "type": "rich",
-              "title": "Read to Test",
+              "title": "Ready to Test",
               "description": "The project ${{ github.repository }} has been deployed.",
               "color": 2123412,
               "thumbnail": {
