@@ -36,4 +36,4 @@ jobs:
           ]
           }' ${{ secrets.WEBHOOK_URL }})
           echo "Webhook server response: $RESPONSE"
-          echo {{github}}
+          echo ${{github}}
