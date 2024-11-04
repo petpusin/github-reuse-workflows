@@ -12,9 +12,6 @@ jobs:
     # OS to run our job on
     runs-on: ubuntu-latest
     steps:
-      # - name: Echo github obj
-      #   run: echo "${{ toJSON(github) }}"
-
       - name: Send a request to webhook
         run: |
           RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
@@ -24,7 +21,7 @@ jobs:
             {
               "type": "rich",
               "title": "Read to Test",
-              "description": "The project ${{ github.repository.full_name }} has been deployed.",
+              "description": "The project ${{ github.repository }} has been deployed.",
               "color": 2123412,
               "thumbnail": {
                 "url": "https://business.futureskill.co/fs-logo-light.png"
@@ -34,7 +31,7 @@ jobs:
                 "url": "https://github.com/${{ github.actor_id }}",
                 "icon_url": "https://business.futureskill.co/fs-logo-light.png"
               },
-              "url": "${{ github.repository.html_url }}"
+              "url": "https://github.com/${{ github.repository }}"
             }
           ]
           }' ${{ secrets.WEBHOOK_URL }})
