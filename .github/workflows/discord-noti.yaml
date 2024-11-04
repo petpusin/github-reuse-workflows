@@ -16,7 +16,7 @@ jobs:
         run: |
           RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
           "username": "GitHub",
-          "content": "@Tech",
+          "content": "<@&1302933387086008390>",
           "embeds": [
             {
               "type": "rich",
