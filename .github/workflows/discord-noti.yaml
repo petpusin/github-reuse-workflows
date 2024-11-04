@@ -12,11 +12,14 @@ jobs:
     # OS to run our job on
     runs-on: ubuntu-latest
     steps:
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
-          DISCORD_USERNAME: "fs-deploy-bot"
-          DISCORD_AVATAR: "https://business.futureskill.co/fs-logo-light.png"
-        uses: Ilshidur/action-discord@master
-        with:
-          args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
+    - name: Echo github obj
+      run: echo ${{ toJson(github) }}
+
+    - name: Discord notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
+        DISCORD_USERNAME: "fs-deploy-bot"
+        DISCORD_AVATAR: "https://business.futureskill.co/fs-logo-light.png"
+      uses: Ilshidur/action-discord@master
+      with:
+        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
