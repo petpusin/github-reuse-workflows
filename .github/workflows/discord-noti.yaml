@@ -1,17 +1,10 @@
 name: Webhook on Event
 # Make sure to change what triggers your action based on your needs
 on:
-  [
-    milestone,
-    create,
-    delete,
-    fork,
-    issues,
-    pull_request,
-    pull_request_review,
-    issue_comment,
-    push,
-  ]
+  workflow_call:
+    secrets:
+      WEBHOOK_URL:
+        required: true
 jobs:
   # ID of our job
   webhook-request:
