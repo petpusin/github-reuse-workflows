@@ -21,7 +21,7 @@ jobs:
             {
               "type": "rich",
               "title": "Ready to Test ",
-              "description": "The project ${{ github.repository }} ${{ github.message }} has been deployed.",
+              "description": "${{ github.head_commit.message }} has been deployed.",
               "color": 2123412,
               "thumbnail": {
                 "url": "https://business.futureskill.co/fs-logo-light.png"
