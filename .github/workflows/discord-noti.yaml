@@ -12,14 +12,30 @@ jobs:
     # OS to run our job on
     runs-on: ubuntu-latest
     steps:
-    - name: Echo github obj
-      run: echo "${{ toJSON(github) }}"
+      - name: Echo github obj
+        run: echo "${{ toJSON(github) }}"
 
-    - name: Discord notification
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
-        DISCORD_USERNAME: "fs-deploy-bot"
-        DISCORD_AVATAR: "https://business.futureskill.co/fs-logo-light.png"
-      uses: Ilshidur/action-discord@master
-      with:
-        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
+      - name: Send a request to webhook
+        run: |
+          RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
+          "username": "GitHub",
+          "content": "@everyone",
+          "embeds": [
+            {
+              "type": "rich",
+              "title": "Read to Test",
+              "description": "The project ${{ github.repository.full_name }} has been deployed.",
+              "color": 2123412,
+              "thumbnail": {
+                "url": "https://business.futureskill.co/fs-logo-light.png"
+              },
+              "author": {
+                "name": "${{ github.actor }}",
+                "url": "https://github.com/${{ github.actor_id }}",
+                "icon_url": "https://business.futureskill.co/fs-logo-light.png"
+              },
+              "url": "${{ github.repository.html_url }}"
+            }
+          ]
+          }' ${{ secrets.WEBHOOK_URL }})
+          echo "Webhook server response: $RESPONSE"
