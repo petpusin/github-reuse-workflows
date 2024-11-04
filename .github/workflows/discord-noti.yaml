@@ -5,6 +5,7 @@ on:
     secrets:
       WEBHOOK_URL:
         required: true
+        
 jobs:
   # ID of our job
   webhook-request:
