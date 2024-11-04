@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo github obj
-        run: echo "${{ toJson(github.event)  }}"
+        run: echo "${{ toJson(github.event.head_commit)  }}"
 
       - name: Send a request to webhook
         run: |
