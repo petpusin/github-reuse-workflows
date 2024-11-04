@@ -20,7 +20,7 @@ jobs:
           "embeds": [
             {
               "type": "rich",
-              "title": "Ready to Test",
+              "title": "Ready to Test ${{ github.message }}",
               "description": "The project ${{ github.repository }} has been deployed.",
               "color": 2123412,
               "thumbnail": {
