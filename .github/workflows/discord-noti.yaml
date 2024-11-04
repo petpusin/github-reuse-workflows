@@ -15,6 +15,8 @@ jobs:
       - name: Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
+          DISCORD_USERNAME: "fs-deploy-bot"
+          DISCORD_AVATAR: "https://business.futureskill.co/fs-logo-light.png"
         uses: Ilshidur/action-discord@master
         with:
           args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
