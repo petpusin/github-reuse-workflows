@@ -8,6 +8,8 @@ on:
     inputs:
       message:
         type: string
+      title:
+        type: string
 
 jobs:
   # ID of our job
@@ -24,7 +26,7 @@ jobs:
           "embeds": [
             {
               "type": "rich",
-              "title": "Ready to Test ",
+              "title": "${{ inputs.title }}",
               "description": "${{ inputs.message }}",
               "color": 2123412,
               "thumbnail": {
