@@ -5,6 +5,9 @@ on:
     secrets:
       WEBHOOK_URL:
         required: true
+    inputs:
+      message:
+        type: string
 
 jobs:
   # ID of our job
@@ -17,12 +20,12 @@ jobs:
         run: |
           RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
           "username": "GitHub",
-          "content": "<@&1302933387086008390>",
+          "content": "<@&1057626115079950389>",
           "embeds": [
             {
               "type": "rich",
               "title": "Ready to Test ",
-              "description": "${{ github.event.head_commit.message }} has been deployed.",
+              "description": "${{ inputs.message }}",
               "color": 2123412,
               "thumbnail": {
                 "url": "https://assets.futureskill.co/users-profile/b2ba3c2e-24cd-458a-85d1-bec924b0f486.jpeg"
