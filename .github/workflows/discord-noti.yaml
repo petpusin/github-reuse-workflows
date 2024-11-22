@@ -10,6 +10,8 @@ on:
         type: string
       title:
         type: string
+      thumbnail:
+        type: string
 
 jobs:
   # ID of our job
@@ -19,9 +21,6 @@ jobs:
     steps:
       - name: Get Input
         run: echo ${{ inputs }}
-
-
-
       - name: Send a request to webhook
         run: |
           RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
@@ -34,7 +33,7 @@ jobs:
               "description": "${{ inputs.message }}",
               "color": 2123412,
               "thumbnail": {
-                "url": "https://assets.futureskill.co/users-profile%2Fdea25dd4-c696-4e56-8733-aa7441b89954.jpeg"
+                "url": "${{ inputs.thumbnail }}"
               },
               "author": {
                 "name": "${{ github.actor }}",
